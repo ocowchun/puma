@@ -183,6 +183,8 @@ module Puma
 
       def peeraddr
         @socket.peeraddr
+      rescue
+        ["<unknown>"]
       end
 
       def peercert
