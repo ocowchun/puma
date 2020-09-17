@@ -181,10 +181,14 @@ module Puma
         end
       end
 
-      def peeraddr
+      def peeraddr(swallow: false)
         @socket.peeraddr
-      rescue
-        ["<unknown>"]
+      rescue => e
+        if swallow
+          ["<unknown>"]
+        else
+          raise e
+        end
       end
 
       def peercert
